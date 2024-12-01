@@ -1,0 +1,21 @@
+{
+  "name": "kctl",
+  "module": "index.ts",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bun build --compile --minify --bytecode ./src/index.ts --outfile ./kctl",
+    "releases": "sh build.sh"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/bun": "^1.1.14",
+    "ora": "8.1.1",
+    "prompts": "2.4.2"
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.9"
+  }
+}
