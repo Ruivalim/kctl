@@ -1,6 +1,6 @@
 # 🚀 KCTL
 
-**Version:** `0.1.0`  
+**Version:** `0.1.5`  
 
 **Welcome to `kctl`** – a lightweight, blazing-fast CLI tool that makes managing Kubernetes easier and more intuitive. Whether you're peeking into pod logs or planning to take your Kubernetes management to the next level, `kctl` has got you covered. This is just the beginning, and we're excited to grow with your Kubernetes needs!
 
@@ -10,7 +10,12 @@
 - **🔥 Lightweight:** A compact binary under 100 MB for super-fast execution.
 - **🔄 Namespace Awareness:** Defaults to your current Kubernetes namespace unless specified.
 - **💡 Interactive Help:** Easily discover available actions for resources with intuitive help commands.
-- **🌐 Cross-Platform:** Works seamlessly on Linux, macOS, and Windows.
+- **🌐 Cross-Platform:** Works seamlessly on Linux, macOS, and Windows (see disclaimer below).
+
+---
+
+## ⚠️ Disclaimer
+While a Windows binary is available for download, **it has not been tested**. Use it at your own risk. If you encounter issues, please report them via [GitHub Issues](https://github.com/Ruivalim/kctl/issues).
 
 ---
 
@@ -23,7 +28,8 @@ kctl [options] [resource] [action]
 ### Options:
 - `-h`, `--help` → Show help information.  
 - `-n`, `--namespace` → Specify the Kubernetes namespace (defaults to your current context if omitted).  
-- `--version` → Display verbose output about the tool.
+- `--version` → Display verbose output about the tool.  
+- `--update` → Update `kctl` to the latest version.
 
 ### Resources:
 - **`pod`** 
@@ -45,7 +51,8 @@ Usage: kctl [options] pod [action]
 Options:
     -h, --help: Show help
     -n, --namespace: Namespace to work on
-    --version: Verbose output
+    --version: Version output
+    --update: Update kctl to the latest version
 
 Actions:
     logs
@@ -84,14 +91,19 @@ Actions:
 2. Download the binary that matches your platform:
    - `kctl-linux`
    - `kctl-mac`
-   - `kctl-windows`  
+   - `kctl-windows` (see [Disclaimer](#-disclaimer))  
 3. Move the binary to a directory in your `PATH`. For example:
    ```bash
-   mv kctl /usr/local/bin/kctl
-   chmod +x /usr/local/bin/kctl
+   mv kctl ~/.local/bin/kctl
+   chmod +x ~/.local/bin/kctl
    ```
 
-4. You're ready to roll! Verify your installation:
+4. Add `~/.local/bin` to your `PATH` if not already included:
+   ```bash
+   export PATH=$PATH:~/.local/bin
+   ```
+
+5. You're ready to roll! Verify your installation:
    ```bash
    kctl --help
    ```
@@ -112,8 +124,8 @@ Are you a dev ninja? 🥷 Build it yourself!
    ```
 4. Add the binary to your `PATH`:  
    ```bash
-   mv ./kctl /usr/local/bin/kctl
-   chmod +x /usr/local/bin/kctl
+   mv ./kctl ~/.local/bin/kctl
+   chmod +x ~/.local/bin/kctl
    ```
 
 5. Done! 🎉 Verify:  
@@ -145,6 +157,7 @@ Got a cool idea? Found a bug? Let’s build this together:
 
 ---
 
-### 🌌 Join the Revolution  
-Simplify your Kubernetes journey with `kctl`. It’s fast, intuitive, and built for YOU. 🚀  
-Happy managing, and see you on the next version! 🛠️
+## **Author**
+
+Created by **[Rui Valim](https://github.com/Ruivalim)**.
+Feel free to reach out with suggestions, feedback, or just to say hi!

@@ -3,7 +3,8 @@ import type { iOptions } from "./types";
 const optionsHelper = `Options:
     -h, --help: Show help
     -n, --namespace: Namespace to work on
-    --version: Verbose output`;
+    --version: Version output
+    --update: Update kctl to the latest version`;
 
 export const help = (options: iOptions) => {
     console.log(`Usage: kctl [options] [resource] [action]

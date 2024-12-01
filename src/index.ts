@@ -4,6 +4,7 @@ import options from './options'
 import type { executionConfig } from "./types";
 import { help, helpAction } from "./help";
 import { iterativeAction, iterativeAll } from "./iterative";
+import { checkForUpdates, update } from "./update";
 
 const namespace = await $`kubectl config view --minify -o jsonpath='{..namespace}'`.text()
 
@@ -25,10 +26,21 @@ const { values, positionals } = parseArgs({
             type: 'boolean',
             description: 'Verbose output',
         },
+        update: {
+            type: 'boolean',
+            description: 'Update kctl to the latest version',
+        }
     },
     strict: true,
     allowPositionals: true,
 });
+
+if (values.update) {
+    await update();
+    process.exit(0)
+}
+
+await checkForUpdates();
 
 if (values.version) {
     console.log(
