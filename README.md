@@ -1,6 +1,6 @@
 # 🚀 KCTL
 
-**Version:** `0.1.5`  
+**Version:** `0.2.0`  
 
 **Welcome to `kctl`** – a lightweight, blazing-fast CLI tool that makes managing Kubernetes easier and more intuitive. Whether you're peeking into pod logs or planning to take your Kubernetes management to the next level, `kctl` has got you covered. This is just the beginning, and we're excited to grow with your Kubernetes needs!
 
@@ -55,7 +55,9 @@ Options:
     --update: Update kctl to the latest version
 
 Actions:
+    get
     logs
+    describe
 ```
 
 ---

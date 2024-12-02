@@ -2,7 +2,7 @@
   "name": "kctl",
   "module": "index.ts",
   "type": "module",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "scripts": {
     "build": "bun build --compile --minify --bytecode ./src/index.ts --outfile ./kctl",
     "releases": "sh build.sh"
