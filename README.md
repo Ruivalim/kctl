@@ -28,7 +28,7 @@ kctl [options] [resource] [action]
 ### Options:
 - `-h`, `--help` → Show help information.  
 - `-n`, `--namespace` → Specify the Kubernetes namespace (defaults to your current context if omitted).  
-- `--version` → Display verbose output about the tool.  
+- `--version` → Display current version.  
 - `--update` → Update `kctl` to the latest version.
 
 ### Resources:

@@ -31,5 +31,5 @@ export const iterativeAll = async (config: executionConfig) => {
         process.exit(0)
     }
 
-    await iterativeAction(resource.resource, config)
+    await options[resource.resource]["get"](config)
 } 

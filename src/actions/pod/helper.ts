@@ -12,7 +12,15 @@ const listPods: (namespace: string) => Promise<iPodList[]> = async (namespace: s
             namespace: pod.metadata.namespace,
             status: pod.status.phase,
             age: pod.metadata.creationTimestamp,
-            containers: pod.spec.containers.map((c: any) => c.name)
+            containers: pod.spec.containers.map((c: any) => c.name),
+            containers_status: pod.status.containerStatuses.map((c: any) => {
+                return {
+                    name: c.name,
+                    ready: c.ready,
+                    restarts: c.restartCount,
+                    status: c.state
+                }
+            }) 
         } as iPodList
     })
 }

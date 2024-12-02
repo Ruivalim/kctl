@@ -62,7 +62,7 @@ if (positionals.length === 2) {
     process.exit(0)
 }else{
     const resourceName = positionals[2]
-    const actionName = positionals[3]
+    const actionName = positionals[3] ?? 'get'
 
     if(!Object.keys(options).includes(resourceName)){
         console.error('Invalid resource')
@@ -72,11 +72,6 @@ if (positionals.length === 2) {
 
     if(values.help){
         helpAction(resourceName, options);
-    }
-
-    if(actionName === undefined){
-        await iterativeAction(resourceName, configs)
-        process.exit(0)
     }
     
     if(!Object.keys(options[resourceName]).includes(actionName)){

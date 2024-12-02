@@ -17,4 +17,10 @@ export interface iPodList {
     status: string,
     age: string,
     containers: string[]
+    containers_status: {
+        name: string,
+        ready: boolean,
+        restarts: number,
+        status: any
+    }[]
 }
