@@ -3,7 +3,7 @@ import { $ } from "bun";
 import options from './options'
 import type { executionConfig } from "./types";
 import { help, helpAction } from "./help";
-import { iterativeAction, iterativeAll } from "./iterative";
+import { iterativeAll } from "./iterative";
 import { checkForUpdates, update } from "./update";
 
 const namespace = await $`kubectl config view --minify -o jsonpath='{..namespace}'`.text()
@@ -59,7 +59,6 @@ if (positionals.length === 2) {
     }
 
     await iterativeAll(configs)
-    process.exit(0)
 }else{
     const resourceName = positionals[2]
     const actionName = positionals[3] ?? 'get'

@@ -2,7 +2,6 @@ import { listPods } from "./helper";
 import type { iAction } from "../../types";
 import ora from 'ora';
 import Table from 'cli-table';
-import { iterativeAction } from "../../iterative";
 
 const podGet: iAction = async (config) => {
     const spinner = ora('Fetching pods').start();
@@ -23,7 +22,7 @@ const podGet: iAction = async (config) => {
 
     console.log(table.toString());
 
-    await iterativeAction('pod', config)
+    process.exit(0);
 }
 
-export default podGet
+await podGet({ namespace: process.env.KCTL_namespace! });

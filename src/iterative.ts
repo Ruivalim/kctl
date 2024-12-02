@@ -7,15 +7,22 @@ export const iterativeAction = async (resourceName: string, config: executionCon
         type: 'select',
         name: 'action',
         message: `Select Action: `,
-        choices: Object.keys(options[resourceName]).map(a => { return { title: a, value: a } }),
+        choices: [
+            ...Object.keys(options[resourceName]).map(a => { return { title: a, value: a } }),
+            { title: 'Back', value: 'back' }
+        ],
     })
 
     if (action.action === undefined) {
-        console.log('No action selected')
+        console.error('No action selected')
         process.exit(0)
     }
 
-    await options[resourceName][action.action](config)
+    if (action.action === 'back') {
+        await iterativeAll(config)
+    }else{
+        await options[resourceName][action.action](config)
+    }
 }
 
 export const iterativeAll = async (config: executionConfig) => {
@@ -27,7 +34,7 @@ export const iterativeAll = async (config: executionConfig) => {
     })
 
     if (resource.resource === undefined) {
-        console.log('No resource selected')
+        console.error('No resource selected')
         process.exit(0)
     }
 

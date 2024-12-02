@@ -47,4 +47,4 @@ const podLogs: iAction = async (config) => {
     }
 }
 
-export default podLogs
+await podLogs({ namespace: process.env.KCTL_namespace! });

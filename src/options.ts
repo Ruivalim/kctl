@@ -1,12 +1,27 @@
-import podGet from './actions/pod/get'
-import podLogs from './actions/pod/logs'
-import type { iOptions } from './types'
+import path from "path";
+import type { executionConfig, iOptions } from "./types";
+import { spawn } from "bun";
+import { iterativeAction } from "./iterative";
+
+const start = async (file: string, config: executionConfig, resource: string) => {
+    await spawn(`bun ${path.resolve(__dirname, file)}`.split(" "), { 
+        stdio: ["inherit", "inherit", "inherit"],
+        env: {
+            ...process.env,
+            ...Object.fromEntries(Object.entries(config).map(([key, value]) => [`KCTL_${key}`, value]))
+        },
+        onExit() {
+            iterativeAction(resource, config)
+        }
+    })
+};
 
 const options: iOptions = {
-    'pod': {
-        'logs': podLogs,
-        'get': podGet
+    pod: {
+        get: async (config) => start("./actions/pod/get.ts", config, "pod"),
+        logs: async (config) => start("./actions/pod/logs.ts", config, "pod"),
+        describe: async (config) => start("./actions/pod/describe.ts", config, "pod"),
     },
-}
+};
 
-export default options
+export default options;
