@@ -21,6 +21,8 @@ const options: iOptions = {
         get: async (config) => start("./actions/pod/get.ts", config, "pod"),
         logs: async (config) => start("./actions/pod/logs.ts", config, "pod"),
         describe: async (config) => start("./actions/pod/describe.ts", config, "pod"),
+        delete: async (config) => start("./actions/pod/delete.ts", config, "pod"),
+        edit: async (config) => start("./actions/pod/edit.ts", config, "pod"),
     },
 };
 

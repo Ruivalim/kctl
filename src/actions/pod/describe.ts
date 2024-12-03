@@ -11,7 +11,7 @@ const podDescribe: iAction = async (config) => {
     spinner.stop();
 
     const pod = await prompts({
-        type: 'select',
+        type: 'autocomplete',
         name: 'pod',
         message: `Select Pod: `,
         choices: pods.map(p => { return { title: p.name, value: p.name } }),

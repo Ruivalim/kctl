@@ -10,7 +10,7 @@ const podLogs: iAction = async (config) => {
     spinner.stop();
 
     const pod = await prompts({
-        type: 'select',
+        type: 'autocomplete',
         name: 'pod',
         message: `Select Pod: `,
         choices: pods.map(p => { return { title: p.name, value: p.name } }),
@@ -29,10 +29,10 @@ const podLogs: iAction = async (config) => {
     }
     
     if (podData.containers.length === 1) {
-        await run(`kubectl logs ${pod.pod} -f`)
+        await run(`kubectl logs -n ${config.namespace} ${pod.pod} -f`)
     }else{
         const container = await prompts({
-            type: 'select',
+            type: 'autocomplete',
             name: 'container',
             message: `Select Container: `,
             choices: podData.containers.map(c => { return { title: c, value: c } }),
@@ -43,7 +43,7 @@ const podLogs: iAction = async (config) => {
             process.exit(0)
         }
 
-        await run(`kubectl logs ${pod.pod} -c ${container.container} -f`)
+        await run(`kubectl logs -n ${config.namespace} ${pod.pod} -c ${container.container} -f`)
     }
 }
 

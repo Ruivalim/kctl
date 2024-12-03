@@ -1,6 +1,6 @@
 # 🚀 KCTL
 
-**Version:** `0.2.0`  
+**Version:** `0.3.0`  
 
 **Welcome to `kctl`** – a lightweight, blazing-fast CLI tool that makes managing Kubernetes easier and more intuitive. Whether you're peeking into pod logs or planning to take your Kubernetes management to the next level, `kctl` has got you covered. This is just the beginning, and we're excited to grow with your Kubernetes needs!
 
@@ -11,6 +11,7 @@
 - **🔄 Namespace Awareness:** Defaults to your current Kubernetes namespace unless specified.
 - **💡 Interactive Help:** Easily discover available actions for resources with intuitive help commands.
 - **🌐 Cross-Platform:** Works seamlessly on Linux, macOS, and Windows (see disclaimer below).
+- **🔍 Searchable Inputs:** Quickly find and interact with resources using fuzzy search for input values.
 
 ---
 
@@ -58,6 +59,8 @@ Actions:
     get
     logs
     describe
+    delete
+    edit
 ```
 
 ---
@@ -138,10 +141,14 @@ Are you a dev ninja? 🥷 Build it yourself!
 ---
 
 ## 🛣️ Roadmap
-This is just the beginning. Here’s what’s next:
-- **🚢 More Resources:** Manage deployments, services, configmaps, and more.  
-- **✨ Interactive Actions:** Scale, delete, or apply resources with simple commands.  
-- **🖌️ Better UX:** Improved output formatting and an intuitive interface.  
+
+| **Resource**   | **Supported Actions**            | **Planned Actions**                |
+|-----------------|----------------------------------|-------------------------------------|
+| **`pod`**      | `get`, `logs`, `describe`, `delete`, `edit` | `scale`, `restart`, `port-forward` |
+| **`deployment`** | _Not yet supported_            | `get`, `scale`, `rollout status`   |
+| **`service`**   | _Not yet supported_             | `get`, `describe`, `delete`        |
+| **`configmap`** | _Not yet supported_             | `get`, `edit`, `delete`            |
+| **`namespace`** | _Not yet supported_             | `get`, `create`, `delete`          |
 
 ---
 
